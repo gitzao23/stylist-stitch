@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="100%" height="100%">
+  <!-- Background Circle (Deep Charcoal) -->
+  <circle cx="32" cy="32" r="30" fill="#1A1C1C" />
+  
+  <!-- Outer Gold Border -->
+  <circle cx="32" cy="32" r="27.5" stroke="#D4AF37" stroke-width="1.5" fill="none" />
+  
+  <!-- Inner Dotted Gold Border (Tailored Stitching Detail) -->
+  <circle cx="32" cy="32" r="24" stroke="#D4AF37" stroke-width="0.75" stroke-dasharray="2 2" fill="none" opacity="0.8" />
+  
+  <!-- Elegant Hanger -->
+  <path d="M 18 42 L 46 42 L 32 30 Z" stroke="#D4AF37" stroke-width="2" stroke-linejoin="round" fill="none" />
+  <path d="M 32 30 C 32 25, 37 24, 36 19 C 35 15, 31 16, 31 19" stroke="#D4AF37" stroke-width="2" stroke-linecap="round" fill="none" />
+  
+  <!-- Primary Sparkle (AI Symbol) inside the Hanger -->
+  <path d="M 32 33 Q 32 37 36 37 Q 32 37 32 41 Q 32 37 28 37 Q 32 37 32 33 Z" fill="#D4AF37" />
+  
+  <!-- Secondary Sparkle floating in upper right -->
+  <path d="M 44 19 Q 44 22 47 22 Q 44 22 44 25 Q 44 22 41 22 Q 44 22 44 19 Z" fill="#D4AF37" opacity="0.9" />
+</svg>
