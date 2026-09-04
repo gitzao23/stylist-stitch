@@ -1,3 +1,32 @@
+# AI 실시간 검색 및 출처 노출 허용 (트래픽 유입용)
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: Claude-SearchBot
+Allow: /
+
+# 사용자가 AI 채팅창에 직접 URL을 입력하여 페이지 분석하는 브라우징 기능 허용
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: Claude-User
+Allow: /
+
+# 프리미엄 패션 콘텐츠의 AI 무단 학습 및 지식 자산 도용 차단 (선택적 보호)
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# Anthropic 봇 서버 과부하 방지 (초당 크롤링 빈도 제한)
+User-agent: ClaudeBot
+Crawl-delay: 1
+
+User-agent: Claude-SearchBot
+Crawl-delay: 1
+
+# 일반 검색엔진 허용 및 사이트맵 명시
 User-agent: *
 Allow: /
 
