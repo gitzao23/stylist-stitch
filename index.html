@@ -387,6 +387,104 @@
                     <li>Sourced referencing international couture and high-fashion minimalism guides</li>
                 </ul>
             </div>
+            
+            <!-- Curator Expertise Section End -->
+        </div>
+    </div>
+</section>
+
+<!-- Floating Share Button (Custom Implementation) -->
+<div class="fixed bottom-24 right-6 md:bottom-10 md:right-10 z-[100]" id="custom-share-container">
+    <button id="share-main-btn" class="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-primary text-on-primary rounded-full shadow-2xl hover:bg-secondary transition-all duration-300 active:scale-90 group">
+        <span class="material-symbols-outlined text-2xl md:text-3xl transition-transform group-hover:rotate-12">share</span>
+    </button>
+    
+    <!-- Share Menu -->
+    <div id="share-menu" class="hidden absolute bottom-full right-0 mb-4 w-56 bg-surface-container-lowest border border-outline-variant/30 rounded-2xl shadow-2xl overflow-hidden backdrop-blur-md transition-all duration-300 transform origin-bottom-right">
+        <div class="p-2 space-y-1">
+            <button onclick="shareKakao()" class="w-full flex items-center gap-4 px-4 py-3 hover:bg-surface-container-low transition-colors text-left rounded-xl group">
+                <span class="w-10 h-10 flex items-center justify-center bg-[#FEE500] rounded-full text-[#3C1E1E] transition-transform group-hover:scale-110">
+                    <svg viewBox="0 0 24 24" class="w-6 h-6 fill-current"><path d="M12 3c-4.97 0-9 3.185-9 7.115 0 2.557 1.707 4.8 4.34 6.054-.188.702-.68 2.531-.777 2.906-.123.477.178.47.375.34.155-.103 2.446-1.662 3.422-2.328.536.084 1.09.128 1.64.128 4.97 0 9-3.185 9-7.115S16.97 3 12 3z"/></svg>
+                </span>
+                <div class="flex flex-col">
+                    <span class="font-body-md font-semibold text-sm text-on-surface">KakaoTalk</span>
+                    <span class="text-[10px] text-secondary">카카오톡 공유</span>
+                </div>
+            </button>
+            <button onclick="shareSNS()" class="w-full flex items-center gap-4 px-4 py-3 hover:bg-surface-container-low transition-colors text-left rounded-xl group">
+                <span class="w-10 h-10 flex items-center justify-center bg-surface-container-high rounded-full text-primary transition-transform group-hover:scale-110">
+                    <span class="material-symbols-outlined text-2xl">ios_share</span>
+                </span>
+                <div class="flex flex-col">
+                    <span class="font-body-md font-semibold text-sm text-on-surface">Message / SNS</span>
+                    <span class="text-[10px] text-secondary">메시지 보내기</span>
+                </div>
+            </button>
+            <button onclick="copyLink()" class="w-full flex items-center gap-4 px-4 py-3 hover:bg-surface-container-low transition-colors text-left rounded-xl group">
+                <span class="w-10 h-10 flex items-center justify-center bg-surface-container-high rounded-full text-primary transition-transform group-hover:scale-110">
+                    <span class="material-symbols-outlined text-2xl">link</span>
+                </span>
+                <div class="flex flex-col">
+                    <span class="font-body-md font-semibold text-sm text-on-surface">Copy Link</span>
+                    <span class="text-[10px] text-secondary" id="copy-status">링크 복사하기</span>
+                </div>
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Share Scripts -->
+<script>
+    function toggleShareMenu() {
+        const menu = document.getElementById('share-menu');
+        menu.classList.toggle('hidden');
+    }
+
+    function shareKakao() {
+        const url = window.location.href;
+        window.open(`https://sharer.kakao.com/talk/friends/picker/link?url=${encodeURIComponent(url)}`, 'kakao_share', 'width=400,height=500');
+    }
+
+    function shareSNS() {
+        const url = window.location.href;
+        const title = document.title;
+        if (navigator.share) {
+            navigator.share({
+                title: title,
+                url: url
+            }).catch(console.error);
+        } else {
+            window.location.href = `sms:?&body=${encodeURIComponent(title + " " + url)}`;
+        }
+    }
+
+    function copyLink() {
+        const url = window.location.href;
+        const statusText = document.getElementById('copy-status');
+        navigator.clipboard.writeText(url).then(() => {
+            const originalText = statusText.innerText;
+            statusText.innerText = 'Copied!';
+            statusText.classList.add('text-primary', 'font-bold');
+            setTimeout(() => {
+                statusText.innerText = originalText;
+                statusText.classList.remove('text-primary', 'font-bold');
+            }, 2000);
+        });
+    }
+
+    document.addEventListener('click', (e) => {
+        const container = document.getElementById('custom-share-container');
+        const menu = document.getElementById('share-menu');
+        if (container && !container.contains(e.target)) {
+            menu.classList.add('hidden');
+        }
+    });
+
+    document.getElementById('share-main-btn').addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleShareMenu();
+    });
+</script>
         </div>
     </div>
 </section>
